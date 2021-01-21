@@ -310,7 +310,6 @@
 
 
 		</ul>
-		<div class="cookie"></div>
 		<div class="countdown" style="display: none;"></div>
 		<div class="result">
 			<p></p>
@@ -367,7 +366,7 @@
 			    	var numList = $('.list li').length;
 			    	var listName = 'list-'+(numList+1);
 			    	$('.list').append('<li class="'+(listName.trim())+' delete-list">'+txtList+'</li>');
-  					setCookie('list-'+(numList+1),txtList,3);
+  					setCookie('list-'+(numList+1),txtList,14);
 					if(checkBtnClear) { $('.btn-clear').show(); }
 		    		countList();
   				}
