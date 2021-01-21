@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>กินไรดี - KIN RAI DEE By ridshare</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content='กินไรดี (KIN RAI DEE) ทำเกิดขึ้นมา เพื่อให้เพื่อนๆ ตอบคำถามโลกแตกที่ว่า "เที่ยงนี้ กินไรดี" ให้ได้'>
+	<meta name="keywords" content="กินไรดี,KINRAIDEE,คำถามโลกแตก,เมนู,อาหาร">
+	<meta name="author" content="Noppadol Madardam (Ridshare)">
+	<link rel="icon" href="favicon.png" type="image/png">
+	<link rel="stylesheet" href="reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Sriracha" rel="stylesheet">
+	<style type="text/css">
+		@charset "UTF-8";
+		/*
+		|--------------------------------------------------------------------------------
+		| CSS reset
+		|--------------------------------------------------------------------------------
+		*/
+		html, body, div, span, applet, object, iframe, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		caption,
+		article, aside, canvas, details, embed,
+		figure, figcaption, footer, header, hgroup,
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure,
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		ol, ul {
+			list-style: none;
+		}
+
+		blockquote, q {
+			quotes: none;
+		}
+
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		/* start css */
+		*, ::after, ::before {
+    		box-sizing: border-box;
+		}
+		body {
+			font-family: 'Sriracha',tahoma,san-serif;
+			font-size: 16px;
+		}
+		a {
+		    transition: all 1s;
+		}
+		.title {
+			font-size: 48px;
+		    text-align: center;
+		    border-bottom: 4px solid #000;
+		    width: 150px;
+		    line-height: 60px;
+		    margin-left: auto;
+		    margin-right: auto;
+		    margin-bottom: 60px;
+		    position: relative;
+		}
+		.title:after {
+			content: 'by ridshare.';
+		    position: absolute;
+		    right: -65px;
+		    bottom: -15px;
+		    font-size: 14px;
+		    font-weight: normal;
+		}
+		.box-page {
+			width: 100%;
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 30px 0; 
+		    background: #f0f0f0;
+		    position: relative;
+		    border: 1px solid rgba(86,61,124,.15);
+		}
+		.title-list {
+		    display: block;
+		    text-align: center;
+		    padding: 7px 12px;
+		    border-radius: 3px;
+    		border: 1px solid rgba(86,61,124,.15);
+		    background-color: #f0f0f0;
+		    border-bottom: 0;
+		    position: absolute;
+		    top: -42px;
+		    left: -1px;
+		    line-height: 24px;
+		}
+		.title-list b {
+			font-weight: bold;
+			padding: 0 5px;
+			font-size: 32px;
+		}
+		.list {
+			display: flex!important;
+		    -ms-flex-wrap: wrap!important;
+    		flex-wrap: wrap!important;
+		    -webkit-box-pack: center!important;
+		    -ms-flex-pack: center!important;
+		    justify-content: center!important;
+		}
+		.list li {
+    		border: 1px solid rgba(86,61,124,.15);
+    		padding: 10px;
+		    background: #fff;
+		}
+		.list li.box-select {
+			background: red;
+			color: #fff;
+			border-color: red;
+		}
+		.result {
+			margin-top: 40px;
+			text-align: center;
+		}
+		.result p {
+			margin: 0;
+			height: 55px;
+		}
+		.result p b {
+			border-bottom: 2px solid;
+		    font-size: 30px;
+		}
+		.btn-add-list {
+		    display: block;
+		    text-align: center;
+		    padding: 7px 12px;
+		    border-radius: 3px;
+    		border: 1px solid rgba(86,61,124,.15);
+		    background-color: #f0f0f0;
+		    border-bottom: 0;
+		    position: absolute;
+		    top: -42px;
+		    right: -1px;
+		    cursor: pointer;
+		}
+		.btn-random {
+		    padding: 30px;
+		    border-radius: 50%;
+		    border: 1px dashed #666;
+		    display: block;
+		    width: 160px;
+		    margin: 60px auto 0;
+		    cursor: pointer;
+		    font-size: 24px;
+		    font-weight: bold;
+		}
+		.btn-add-list:hover,
+		.btn-random:hover {
+			background-color: #fff;
+			font-weight: normal;
+		}
+		.btn-clear {
+			display: block;
+			text-align: center;
+			color: red;
+    		cursor: pointer;
+    		border-bottom: 2px dashed red;
+    		width: 250px;
+    		margin: 20px auto;
+		}
+		.countdown {
+			position: absolute;
+		    background: #f0f0f0;
+		    width: 100%;
+		    height: 60%;
+		    left: 0;
+		    text-align: center;
+		    font-size: 112px;
+		    padding-top: 70px;
+		}
+		.text-processing {
+			font-size: 20px;
+			line-height: 20px;
+			margin-left: 10px;
+		}
+		.btn-disabled {
+			cursor: default;
+			pointer-events: none;
+		}
+		.delete-list:hover {
+			transition: all .2s;
+			background-color: red;
+			color: #fff;
+			cursor: pointer;
+		}
+		.objective {
+		    text-align: center;
+    		margin: 20px 10px;
+    		font-size: 14px;
+		}
+		.objective b {
+			font-weight: bold;
+		}
+		@media (max-width: 400px) {
+			.title-list {
+			    top: -38px;
+			    line-height: 24px;
+			    font-size: 14px;
+			}
+			.title-list b {
+			    font-size: 24px;
+			    padding: 0;
+			}
+			.btn-add-list {
+			    top: -38px;
+			    font-size: 14px;
+			}
+			.countdown {
+				font-size: 72px;
+			}
+			.text-processing {
+				font-size: 15px;
+			}
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1 class="title">กินไรดี</h1>
+	<div class="box-page">
+		<a class="btn-add-list" onclick="addList()">+ เพิ่มเมนูอาหาร</a>
+		<div class="title-list">เมนูอาหารทั้งหมด <b></b> เมนู</div>
+		<ul class="list">
+			<li class="list-1">ข้าวมัน ข้าวหมก</li>
+			<li class="list-2">เครื่องแกงไก่</li>
+			<li class="list-3">ข้าวผัด</li>
+			<li class="list-4">กระเพราะไก่</li>
+			<li class="list-5">สุกี้แห้ง สุกี้น้ำ</li>
+			<li class="list-6">เย็นตาโฟ</li>
+			<li class="list-7">ก๋วยเตี๋ยวเรือ</li>
+			<li class="list-8">มาม่าผัด</li>
+			<li class="list-9">ผัดพริกแกง/พริกเผา</li>
+			<li class="list-10">ผัดเผ็ดไก่ราดข้าว</li>
+			<li class="list-11">ผัดไก่กะเทียมพริกไทย</li>
+			<li class="list-12">ข้าวไข่เจียว</li>
+			<li class="list-13">KFC</li>
+			<li class="list-14">Pizza</li>
+			<li class="list-15">ชาบู</li>
+			<li class="list-16">บุฟเฟต์</li>
+			<li class="list-17">ผัดซีอิ๊ว</li>
+			<li class="list-18">ราดหน้าหมี่กรอบ</li>
+			<li class="list-19">คะน้าไก่กรอบ</li>
+			<li class="list-20">ส้มตำ</li>
+			<li class="list-21">เมนูยำ</li>
+			<li class="list-22">ข้าวหน้าไก่</li>
+			<li class="list-23">สปาเก็ตตี้ราดเนื้อ</li>
+			<li class="list-24">ผัดไทย</li>
+			<li class="list-25">ข้าวต้มปลา</li>
+			<li class="list-26">ผัดพริกแกง</li>
+			<li class="list-27">ผัดผงกระหรี่</li>
+			<li class="list-28">ผัดน้ำมันหอย</li>
+			<li class="list-29">ผัดขี้เมา ผัดฉ่า</li>
+			<li class="list-30">ผัดพริกเผา</li>
+			<li class="list-31">ผัดพริกสด</li>
+			<li class="list-32">ผัดผักบุ้งไฟแดง</li>
+			<li class="list-33">แกงเขียวหวาน</li>
+			<li class="list-34">แกงจืด</li>
+			<li class="list-35">ก๋วยเตี๋ยวต้มยำน้ำใส/ข้น</li>
+			<li class="list-36">ผัดมักกะโรนี</li>
+			<li class="list-37">แกงส้มไข่ชะอม</li>
+			<li class="list-38">ปลาราดพริก</li>
+			<li class="list-39">ข้าวหน้าเป็ด</li>
+			<li class="list-40">ผัดคะน้าปลาเค็ม</li>
+			<li class="list-41">ผัดผักรวมมิตร</li>
+			<li class="list-42">ไก่พะโล้</li>
+			<li class="list-43">ฉู่ฉี่ปลาทู</li>
+			<li class="list-44">ผัดเปรี้ยวหวาน</li>
+			<li class="list-45">ผัดหอยลาย</li>
+			<li class="list-46">ไข่ลูกเขย</li>
+			<li class="list-47">ฟักทองผัดไข่</li>
+			<li class="list-48">ผัดพริกแกงปลาดุก</li>
+			<li class="list-49">คั่วกลิ้งไก่</li>
+			<li class="list-50">ต้มจับฉ่าย</li>
+			<li class="list-51">ต้มผักกาดดอง</li>
+			<li class="list-52">ต้มข่าไก่</li>
+			<li class="list-53">พะแนงไก่</li>
+
+
+		</ul>
+		<div class="cookie"></div>
+		<div class="countdown" style="display: none;"></div>
+		<div class="result">
+			<p></p>
+			<a class="btn-random">สุ่มเมนูอาหาร</a>
+			<a class="btn-clear" style="display: none;" onclick="deleteAllCookies()">เคลียร์เมนูอาหารที่เพิ่มทั้งหมด</a>
+		</div>
+		<script type="text/javascript">
+
+			function setCookie(cname, cvalue, exdays) {
+			  var d = new Date();
+			  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+			  var expires = "expires="+d.toUTCString();
+			  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+			}
+
+			function getCookie(cname) {
+			  var name = cname + "=";
+			  var ca = document.cookie.split(';');
+			  for(var i = 0; i < ca.length; i++) {
+			    var c = ca[i];
+			    while (c.charAt(0) == ' ') {
+			      c = c.substring(1);
+			    }
+			    if (c.indexOf(name) == 0) {
+			      return c.substring(name.length, c.length);
+			    }
+			  }
+			  return "";
+			}
+
+			function deleteCookie(cname) {
+				document.cookie = cname +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			}
+
+			function deleteAllCookies() {
+				var removeAll = confirm('ต้องการ "เคลียร์เมนูอาหารที่เพิ่มทั้งหมด" ใช่หรือไม่?');
+	  			if (removeAll) {
+	    			document.cookie.split(";").forEach(function(c) { 
+	    				document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+	    			});
+	    			location.reload();
+	  				return true;
+	  			} else {
+					console.log('no');
+		    		return false;
+	  			}
+			}
+			var checkBtnClear = $('.btn-clear').is(":hidden");
+			function addList() {
+  				var txtList = prompt("เมนูอาหาร ที่ต้องการเพิ่ม :", "");
+  				if (txtList == null || txtList == "") {
+  				} else {
+			    	clearResult();
+			    	var numList = $('.list li').length;
+			    	var listName = 'list-'+(numList+1);
+			    	$('.list').append('<li class="'+(listName.trim())+' delete-list">'+txtList+'</li>');
+  					setCookie('list-'+(numList+1),txtList,3);
+					if(checkBtnClear) { $('.btn-clear').show(); }
+		    		countList();
+  				}
+			}
+			$(document).ready(function() {
+		    	countList();
+				var cookies = document.cookie.split(/;/);
+				if(cookies!='') {
+					for (var i = 0, len = cookies.length; i < len; i++) {
+		   				var cookie = cookies[i].split(/=/);
+			    		var listName = cookie[0];
+				    	$('.list').append('<li class="'+(listName.trim())+' delete-list">'+cookie[1]+'</li>');
+					}
+					if(checkBtnClear) { $('.btn-clear').show(); }
+			    	countList();
+				}
+				
+			    $(document).on('click','.btn-random',function() {
+			    	$('.btn-random').addClass('btn-disabled');
+			    	clearResult();
+				    var numList = $('.list li').length;
+				    var random = Math.floor(Math.random() * numList) + 1;
+				    var list = $('.list-'+random);
+				    var listTxt = $('.list-'+random).text();
+				    var timeleft = 10;
+					var downloadTimer = setInterval(function(){
+	  					if(timeleft <= 0) {
+	    					clearInterval(downloadTimer);
+	    					$(".countdown").text("Finished");
+	    					var showResult = setInterval(function(){
+	    						clearInterval(showResult);
+	    						$(".countdown").hide();
+	    						list.addClass('box-select');
+						    	var listTxt = $('.list-'+random).text();
+						    	$('.result p').html('เมนูที่สุ่มได้ : <b>' +listTxt+'</b>');
+						    	$('.btn-random').removeClass('btn-disabled');
+	    					}, 500);
+	  					} else {
+	  						$(".countdown").show().text(timeleft).append('<small class="text-processing">รอสักครู่ ระบบกำลังทำการสุ่ม...</small>');
+	  					}
+	  					timeleft -= 1;
+					}, 1000);
+					return false;
+			    });
+			    $(document).on('click','.delete-list',function() {
+			    	var remove = confirm('ต้องการ "ลบเมนูอาหารนี้" ใช่หรือไม่?');
+	  				if (remove) {
+	  					$(this).remove();
+				    	var deleteList = $(this).attr('class').split(' ')[0];
+				    	deleteCookie(deleteList);
+				    	countList();
+	  				}
+			    	
+			    });
+			});
+			function countList() {
+				var numList = $('.list li').length;
+				$('.title-list b').text(numList);
+			}
+			function clearResult() {
+				$('.list li').removeClass('box-select');
+				$('.result p').html('');
+			}
+		</script>
+	</div>
+	<div class="objective"><b>กินไรดี (KIN RAI DEE)</b> ทำเกิดขึ้นมา เพื่อให้เพื่อนๆ ตอบคำถามโลกแตกที่ว่า <b>"เที่ยงนี้ กินไรดี"</b> ให้ได้</div>
+	<p style="display: none;">ถ้าตอบคำถามไม่ได้ ทักมาที่ <a href="https://fb.com/ridshare.page" target="_blank">ridshare</a></p>
+</body>
+</html>
