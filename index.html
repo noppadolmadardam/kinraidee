@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content='กินไรดี (KIN RAI DEE) ทำเกิดขึ้นมา เพื่อให้เพื่อนๆ ตอบคำถามโลกแตกที่ว่า "เที่ยงนี้ กินอะไรดี" ให้ได้'>
+    <meta name="description" content='กินไรดี (KIN RAI DEE) ทำเกิดขึ้นมา เพื่อให้เพื่อนๆ หมดปัญหากับคำถามโลกแตกที่ว่า "เที่ยงนี้ กินอะไรดี"'>
 	<meta name="keywords" content="กินไรดี,กินอะไรดี,ระบบสุ่มเมนูอาหาร,โปรแกรมสุ่มอาหาร,เมนู,อาหาร,KINRAIDEE,คำถามโลกแตก">
 	<meta name="author" content="Noppadol Madardam (Ridshare)">
 	<link rel="icon" href="favicon.png" type="image/png">
@@ -269,6 +269,24 @@
 		.note-btn {
 			font-size: 12px !important;
 		}
+		.cookie-noti-confirm {
+			text-align: center;
+		    background: #f0f0f0;
+		    padding: 10px;
+		    font-size: 14px;
+		    position: fixed;
+		    width: 100%;
+		    bottom: 0;
+		    border-top: 1px solid rgba(86,61,124,.15);
+		}
+		.btn-confirm-cookie-noti {
+		    padding: 3px 10px;
+		    border: 1px solid;
+		    cursor: pointer;
+		    display: block;
+		    width: 160px;
+		    margin: 10px auto;
+		}
 		@media (max-width: 768px) {
 			.btn-random {
 				margin-bottom: 30px;
@@ -276,9 +294,6 @@
 			.btn-options {
 		        margin: 0 25px 30px;
 			}
-			/*.btn-options:last-child {
-				margin-bottom: 40px;
-			}*/
 		}
 		@media (max-width: 400px) {
 			.title-list {
@@ -461,13 +476,18 @@
 			    	var numList = $('.list li').length;
 			    	var listName = 'list-'+(numList+1);
 			    	$('.list').append('<li class="'+(listName.trim())+' delete-list">'+txtList+'</li>');
-  					setCookie('list-'+(numList+1),txtList,14);
+  					setCookie('list-'+(numList+1),txtList,365);
 					if(checkBtnClear) { $('.btn-clear').show(); }
 		    		countList();
   				}
 			}
 			$(document).ready(function() {
 		    	countList();
+		    	var cookieNoti = getCookie('cookie-noti');
+	    		console.log('cookieNoti : ' + cookieNoti);
+		    	if(cookieNoti=='') {
+		    		$('.cookie-noti-confirm').show();
+		    	}
 				var cookies = document.cookie.split(/;/);
 				if(cookies!='') {
 					for (var i = 0, len = cookies.length; i < len; i++) {
@@ -486,7 +506,6 @@
 			    	clearResult();
 				    var numList = $('.list li').length;
 				    var random = Math.floor(Math.random() * numList);
-				    console.log('random > ' + random);
 				    var list = $('.list').find('li').eq(random);
 				    var listTxt = $(list).text();
 				    var timeleft = 5;
@@ -527,6 +546,10 @@
 				    	countList();
 	  				}
 			    });
+			     $(document).on('click','.btn-confirm-cookie-noti',function() {
+		    		setCookie('cookie-noti','ok',90);
+		    		$('.cookie-noti-confirm').hide();
+			    });
 			});
 			function countList() {
 				var numList = $('.list li').length;
@@ -549,5 +572,9 @@
 	</div>
 	<div class="objective">หมดปัญหากับคำถามโลกแตกที่ว่า <b>"เที่ยงนี้ กินไรดี"</b> ด้วยเว็บ <b>กินไรดี (KIN RAI DEE)</b>  </div>
 	<p style="display: none;">ถ้าตอบคำถามไม่ได้ ทักมาที่ <a href="https://fb.com/ridshare.page" target="_blank">ridshare</a></p>
+	<div class="cookie-noti-confirm" style="display: none;">
+		<p>เว็บไซต์ของเรามีการเก็บ Cookies ซึ่งเก็บข้อมูลว่า คุณเพิ่มเมนูอาหารอะไรบ้าง เมื่อครั้งหน้าคุณเข้ามาในเว็บของเรา เมนูอาหารที่คุณเคยเพิ่มไว้จะยังคงอยู่ตามเดิม</p>
+		<a class="btn-confirm-cookie-noti">โอเค และปิดหน้าต่าง</a>
+	</div>
 </body>
 </html>
